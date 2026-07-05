@@ -1,0 +1,44 @@
+```gitignore
+# Binaries
+/pulse
+/*.exe
+/*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test binary
+*.test
+
+# Go coverage
+*.out
+coverage.out
+
+# Vendor (uncomment if you don't commit dependencies)
+# /vendor/
+
+# IDEs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+dist/
+build/
+
+# Delve debugger
+__debug_bin
+
+# Local configuration
+*.local
+```
