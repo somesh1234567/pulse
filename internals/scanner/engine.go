@@ -6,8 +6,6 @@ import (
 	"pulse/internals/kubernetes"
 )
 
-var ns_list string
-
 func Run() error {
 	client, err := kubernetes.NewClient()
 	if err != nil {
