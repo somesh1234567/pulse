@@ -1,8 +1,24 @@
 package scanner
 
-import "errors"
+import (
+	"fmt"
+	"pulse/internals/discovery"
+	"pulse/internals/kubernetes"
+)
+
+var ns_list string
 
 func Run() error {
-	//logic
-	return errors.New("Not working")
+	client, err := kubernetes.NewClient()
+	if err != nil {
+		return err
+	}
+	state, err := discovery.BuildState(client)
+	if err != nil {
+		return err
+	}
+	for _, ns := range state.Namespaces.Items {
+		fmt.Printf(". %s\n", ns.Name)
+	}
+	return nil
 }
