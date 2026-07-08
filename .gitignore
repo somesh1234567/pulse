@@ -7,7 +7,7 @@
 *.so
 *.dylib
 
-idea.txt
+*.txt
 
 # Go test binary
 *.test
