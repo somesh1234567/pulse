@@ -8,6 +8,6 @@ import (
 	"k8s.io/client-go/kubernetes"
 )
 
-func GetNodes(client *kubernetes.Clientset) (*corev1.NodeList, error) {
+func GetNodes(client kubernetes.Interface) (*corev1.NodeList, error) {
 	return client.CoreV1().Nodes().List(context.Background(), metav1.ListOptions{})
 }

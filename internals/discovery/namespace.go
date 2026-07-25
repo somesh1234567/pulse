@@ -8,6 +8,6 @@ import (
 	"k8s.io/client-go/kubernetes"
 )
 
-func GetNamespaces(client *kubernetes.Clientset) (*corev1.NamespaceList, error) {
+func GetNamespaces(client kubernetes.Interface) (*corev1.NamespaceList, error) {
 	return client.CoreV1().Namespaces().List(context.Background(), metav1.ListOptions{})
 }

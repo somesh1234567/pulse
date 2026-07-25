@@ -3,16 +3,13 @@ package scanner
 import (
 	"fmt"
 	"pulse/internals/discovery"
-	"pulse/internals/kubernetes"
 	"pulse/internals/rules"
 	"pulse/internals/shared"
 )
 
 func Run() error {
-	client, err := kubernetes.NewClient()
-	if err != nil {
-		return err
-	}
+	// client, err := kubernetes.NewClient()
+	client := discovery.FakeClient()
 	state, err := discovery.BuildState(client)
 	if err != nil {
 		return err
@@ -37,6 +34,8 @@ func Run() error {
 	for _, pod := range state.Pods.Items {
 		fmt.Printf(". %s\n", pod.Name)
 	}
+
+	// FINDINGS //
 	fmt.Println()
 	fmt.Println("Findings")
 	fmt.Println("========")

@@ -2,7 +2,7 @@ package discovery
 
 import "k8s.io/client-go/kubernetes"
 
-func BuildState(client *kubernetes.Clientset) (*ClusterState, error) {
+func BuildState(client kubernetes.Interface) (*ClusterState, error) {
 	//get the nodes
 	nodes, err := GetNodes(client)
 	if err != nil {

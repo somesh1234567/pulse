@@ -8,6 +8,6 @@ import (
 	"k8s.io/client-go/kubernetes"
 )
 
-func GetPods(client *kubernetes.Clientset) (*corev1.PodList, error) {
+func GetPods(client kubernetes.Interface) (*corev1.PodList, error) {
 	return client.CoreV1().Pods("").List(context.Background(), metav1.ListOptions{})
 }
