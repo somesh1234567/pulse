@@ -16,7 +16,9 @@ func Run() error {
 	}
 	var findings []shared.Finding
 	nodeRule := rules.NodeHealthRule{}
+	memoryRule := rules.NodeMemoryRule{}
 	findings = append(findings, nodeRule.Run(state)...)
+	findings = append(findings, memoryRule.Run(state)...)
 	fmt.Println("Scan Summary..")
 	fmt.Println("===============")
 	fmt.Println()
@@ -49,6 +51,7 @@ func Run() error {
 		fmt.Printf("Resource : %s\n", finding.Resource)
 		fmt.Printf("Message  : %s\n", finding.Message)
 		fmt.Printf("Diagnosis: %s\n", finding.Diagnosis)
+		fmt.Printf("Related Events to help: %s\n", finding.RelatedEvents)
 		fmt.Println()
 	}
 	return nil

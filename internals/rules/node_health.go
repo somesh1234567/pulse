@@ -1,7 +1,6 @@
 package rules
 
 import (
-	"fmt"
 	"pulse/internals/discovery"
 	"pulse/internals/shared"
 
@@ -17,7 +16,7 @@ func (r NodeHealthRule) Name() string {
 func (r NodeHealthRule) Run(state *discovery.ClusterState) []shared.Finding {
 	var findings []shared.Finding
 	for _, node := range state.Nodes.Items {
-		fmt.Println(node.Name)
+		// fmt.Println(node.Name)
 		for _, condition := range node.Status.Conditions {
 			if condition.Type == corev1.NodeReady &&
 				condition.Status != corev1.ConditionTrue {

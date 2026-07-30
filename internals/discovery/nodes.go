@@ -11,3 +11,12 @@ import (
 func GetNodes(client kubernetes.Interface) (*corev1.NodeList, error) {
 	return client.CoreV1().Nodes().List(context.Background(), metav1.ListOptions{})
 }
+
+func GetNodeEvent(client kubernetes.Interface) (*corev1.EventList, error) {
+	return client.CoreV1().Events("").List(
+		context.Background(),
+		metav1.ListOptions{
+			FieldSelector: "involvedObject.kind=Node",
+		},
+	)
+}
